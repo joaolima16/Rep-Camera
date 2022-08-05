@@ -1,20 +1,20 @@
-import React from 'react';
-
 import { NavigationContainer } from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack'
-
-import Home from './src/pages/Home'
-import CameraScreen from './src/pages/Camera';
-
-const Stack = createNativeStackNavigator();
-
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import * as React from 'react';
+import { Provider } from 'react-redux';
+import CamPage from './pages/CamPage';
+import PreviewPage from './pages/PreviewPage';
+import store from './store';
 export default function App() {
+  const Stack = createNativeStackNavigator();
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={ Home }/>
-        <Stack.Screen name="Camera" component={CameraScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Cam" component={CamPage} />
+          <Stack.Screen name="Preview" component={PreviewPage} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
-}
+};
