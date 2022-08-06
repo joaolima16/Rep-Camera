@@ -9,7 +9,10 @@ import {
   Image,
 } from "react-native";
 import { Camera } from "expo-camera";
+
 import { FontAwesome } from "@expo/vector-icons";
+import { Octicons } from '@expo/vector-icons'; 
+
 import * as Permissions from "expo-permissions";
 import * as MediaLibrary from "expo-media-library";
 
@@ -73,9 +76,14 @@ export default function CameraScreen(navigation) {
             <FontAwesome
               name="exchange"
               size={23}
-              color="#FF0000"
+              color="#a1e3da"
             ></FontAwesome>
           </TouchableOpacity>
+
+          <TouchableOpacity style={styles.tiraFoto} onPress={takePicture}>
+            <FontAwesome name="camera" size={23} color="#fff"></FontAwesome>
+          </TouchableOpacity>
+
           <TouchableOpacity
             style={styles.buttonFlash}
             onPress={()=>
@@ -85,41 +93,33 @@ export default function CameraScreen(navigation) {
                 : setFlash(Camera.Constants.FlashMode.off)
             }
           >
-            <FontAwesome
-              icon="fa-solid fa-bolt-lightning"
-              size={20}
-              color="#fff"
-            ></FontAwesome>
+          <Octicons name="light-bulb" size={24} color="#a1e3da" />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.tiraFoto} onPress={takePicture}>
-            <FontAwesome name="camera" size={23} color="#fff"></FontAwesome>
-          </TouchableOpacity>
+          
         </View>
       </Camera>
       {capturarFoto && (
         <Modal animationType="slide" transparent={true} visible={abrir}>
           <View style={styles.contentModal}>
-            <TouchableOpacity
-              style={styles.fecharButton}
-              onPress={() => {
-                setAbrir(false);
-              }}
-            >
-              <FontAwesome name="close" size={50} color="#fff"></FontAwesome>
-            </TouchableOpacity>
+            <View style={styles.modalButtons}>
+              <TouchableOpacity
 
-            <TouchableOpacity
-              style={styles.baixarButton}
-              onPress={() => {
-                salvePicture;
-              }}
-            >
-              <FontAwesome
-                name="upload"
-                size={50}
-                color="#121212"
-              ></FontAwesome>
-            </TouchableOpacity>
+                onPress={() => {
+                  setAbrir(false);
+                }}
+              >
+                <FontAwesome name="close" size={50} color="#fff"></FontAwesome>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                style={styles.baixarButton}
+                onPress={() => {
+                  salvePicture;
+                }}
+              >
+                <FontAwesome name="upload" size={50} color="#fff"></FontAwesome>
+              </TouchableOpacity>
+            </View>
             <Image
               style={styles.imgFoto}
               source={{ uri: capturarFoto }}
@@ -142,66 +142,55 @@ const styles = StyleSheet.create({
   },
   contentButtons: {
     flex: 1,
+    alignItems:  "flex-end",
+    justifyContent: "space-around",
     backgroundColor: "transparent",
     flexDirection: "row",
     margin: 30,
   },
   buttonFlash: {
-    position: "absolute",
-    bottom: 50,
-    left: 300,
-    justifyContent: "center",
-    alignItems: "center",
     backgroundColor: "#fff",
-    margin: 20,
+    alignItems: "center",
+    justifyContent: "center",
     height: 60,
     width: 60,
     borderRadius: 50,
   },
   buttonFlip: {
-    position: "absolute",
-    bottom: 50,
-    left: 30,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#fff",
-    margin: 20,
     height: 60,
     width: 60,
     borderRadius: 50,
   },
   tiraFoto: {
-    position: "absolute",
-    bottom: 50,
-    right: 160,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "red",
-    margin: 20,
+    backgroundColor: "#a1e3da",
     height: 60,
     width: 60,
     borderRadius: 50,
+    marginLeft: 5,
+    marginRight: 5
   },
   contentModal: {
     flex: 1,
+    alignItems: "center",
     justifyContent: "center",
-    alignItems: "flex-end",
-    margin: 10,
-  },
-  fecharButton: {
-    position: "absolute",
-    top: 10,
-    left: 2,
+    flexDirection: "column",
     margin: 10,
   },
   imgFoto: {
     width: "100%",
     height: 400,
-  },
-  baixarButton: {
-    position: "absolute",
-    top: 10,
-    right: 10,
-    margin: 10,
-  },
+  }, 
+  modalButtons: {
+    display: 'flex',
+    width: "80%",
+    height: "10%",
+    alignItems: 'center',
+    justifyContent: "space-between",
+    flexDirection: "row",
+  }
 });
