@@ -4,23 +4,20 @@ import { StyleSheet, Text, View, Image, TouchableOpacity, ImageBackground  } fro
 export default function Home({navigation}) {
   return (
     <View style={styles.container}>
-     <ImageBackground
-      style={styles.wave} 
-      source={require('../../../assets/wave.png')}
-      >
-        <Image
-        style={styles.photos} 
-        source={require('../../../assets/undraw_photos_re_pvh3.png')}
-        />
-        <TouchableOpacity 
-            style={styles.btn} 
-            onPress={() => navigation.navigate('Camera')}>
-                <Text style={styles.textButton}>Acessar câmera</Text>
+      <ImageBackground style={styles.wave}
+        source={require('../../assets/wave.png')}>
+        <Image style={styles.photos} 
+          source={require('../../assets/undraw_photos_re_pvh3.png')}/>
+        <TouchableOpacity style={styles.btn} 
+          onPress={() => navigation.navigate('Camera')}>
+          <Text style={styles.textButton}>
+            Acessar câmera
+          </Text>
         </TouchableOpacity>
-    </ImageBackground>
+      </ImageBackground>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {

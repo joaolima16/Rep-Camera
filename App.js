@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 import { Provider } from 'react-redux';
 import CamPage from './pages/CamPage';
+// import Home from './pages/Home';
 import PreviewPage from './pages/PreviewPage';
 import store from './store';
 export default function App() {
@@ -11,6 +12,7 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
+          {/* <Stack.Screen name="Home" component={Home} /> */}
           <Stack.Screen name="Cam" component={CamPage} />
           <Stack.Screen name="Preview" component={PreviewPage} />
         </Stack.Navigator>
