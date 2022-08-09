@@ -53,7 +53,7 @@ export default function CamPage({ navigation }) {
                 <Camera style={styles.camera} type={type} ref={camRef} flashMode={flash}>
                     <View style={styles.contentButtons}>
                         <TouchableOpacity style={styles.buttonFlip} onPress={()=>setType(type == Camera.Constants.Type.back ? Camera.Constants.Type.front : Camera.Constants.Type.back)}>
-                            <FontAwesome name="exchange" size={30} color="#FF0000">
+                            <FontAwesome name="exchange" size={30} color="#a1e3da">
                             </FontAwesome>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.tiraFoto} onPress={()=>takePicture()}>
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
         justifyContent:'flex-end'
     },
     contentButtons: {
-        height:200,
+        height:180,
         backgroundColor: "transparent",
         flexDirection: "row",
         alignItems:'center',
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     tiraFoto: {
         justifyContent: "center",
         alignItems: 'center',
-        backgroundColor: 'red',
+        backgroundColor: '#a1e3da',
         height: 60,
         width: 60,
         borderRadius: 50
