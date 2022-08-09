@@ -23,10 +23,10 @@ export default function PreviewPage({ navigation }) {
             <ImageBackground style={styles.picture} source={{ uri: states.Picture.value }} resizeMode="cover">
                 <View style={styles.btnWrapper}>
                     <TouchableOpacity style={styles.downloadButton} onPress={()=>savePhoto()}>
-                        <FontAwesome name='upload' size={50} color="#fff"></FontAwesome>
+                        <FontAwesome name='upload' size={50} color="#a1e3da"></FontAwesome>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.closeBtn} onPress={()=>closePreview()}>
-                        <FontAwesome name='close' size={50} color="#fff">
+                        <FontAwesome name='close' size={50} color="#a1e3da">
                         </FontAwesome>
                     </TouchableOpacity>
                 </View>
@@ -59,7 +59,9 @@ const styles = StyleSheet.create({
         alignItems:'center',
         justifyContent:'center',
         borderRadius:1000,
-        backgroundColor:'#ff0000'
+        borderWidth:2,
+        borderColor:'#a1e3da',
+        backgroundColor:'#fff',
     },
     downloadButton: {
         margin:10,
@@ -68,7 +70,9 @@ const styles = StyleSheet.create({
         alignItems:'center',
         justifyContent:'center',
         borderRadius:1000,
-        backgroundColor:'#33cc33'
+        borderWidth:2,
+        borderColor:'#a1e3da',
+        backgroundColor:'#fff'
     },
     picture:{
         flex:1,
